@@ -24,3 +24,25 @@ window.addEventListener('deviceorientation', function(event) {
     gamma: gamma - gamma0
   })
 })
+
+function onClickMouse(button) {
+  socket.emit('clickMouse', {
+    button
+  })
+}
+
+function onScroll(direction) {
+  socket.emit('scrollMouse', {
+    direction
+  })
+}
+let clickMode = false
+function openMouseMode() {
+  var clickWrapper = document.getElementById('click-wrapper')
+  if(clickMode) {
+    clickWrapper.style.display = 'none'
+  } else {
+    clickWrapper.style.display = 'flex'
+  }
+  clickMode = !clickMode
+}

@@ -20,4 +20,13 @@ io.on('connection', function(socket) {
     const y = toScreen(-Math.sin(d2r(beta)) * 7, 720)
     robotjs.moveMouse(x, y)
   })
+  socket.on('clickMouse', function(data) {
+    const { button } = data
+    robotjs.mouseClick(button)
+  })
+  socket.on('scrollMouse', function(data) {
+    const { direction } = data
+    robotjs.scrollMouse(0, direction)
+  })
+  
 })
